@@ -12,5 +12,11 @@ pipeline {
                 sh "uname -a"
             }
         }
+        stage('stage3') {
+            steps {
+                sh "pwd"
+                sh "whoami"
+            }
+        }
     }
 }
