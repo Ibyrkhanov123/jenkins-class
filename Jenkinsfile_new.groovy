@@ -10,13 +10,16 @@ pipeline {
         }
         stage('tf-init') {
             steps {
-                echo "Running Tf-init"
-                sh '''
-                  terraform init
-                  pwd
-                  ls -l
-                '''
+                dir("app-infra") {
+                    echo "Running Tf-init"
+                    sh '''
+                      terraform init
+                      pwd
+                      ls -l
+                    '''
+                }
             }
+
         }
     }
 }
