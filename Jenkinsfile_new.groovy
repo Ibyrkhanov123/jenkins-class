@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Running Tf-init"
                 sh "terraform init"
+                sh "pwd"
             }
         }
     }
