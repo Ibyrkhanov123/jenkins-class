@@ -11,8 +11,11 @@ pipeline {
         stage('tf-init') {
             steps {
                 echo "Running Tf-init"
-                sh "terraform init"
-                sh "pwd"
+                sh '''
+                  terraform init
+                  pwd
+                  ls -l
+                '''
             }
         }
     }
