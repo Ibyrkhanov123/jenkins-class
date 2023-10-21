@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('stage1') {
+        stage('tf-version') {
             steps {
-                echo "Running Stage1"
-                sh "pwd"
-                sh "whoami"
+                echo "Running Tf-Version"
+                sh "terraform -v"
+
             }
         }
     }
