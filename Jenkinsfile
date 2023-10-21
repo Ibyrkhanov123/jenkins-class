@@ -18,5 +18,10 @@ pipeline {
                 sh "whoami"
             }
         }
+        stage('terraform version'){
+            steps {
+                sh "terraform -v"
+            }
+        }
     }
 }
