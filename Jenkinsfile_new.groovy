@@ -8,7 +8,7 @@ pipeline {
 
             }
         }
-        stage('tf-version') {
+        stage('tf-init') {
             steps {
                 echo "Running Tf-init"
                 sh "terraform init"
