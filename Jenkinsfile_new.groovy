@@ -12,14 +12,19 @@ pipeline {
             steps {
                 dir("app-infra") {
                     echo "Running Tf-init"
-                    sh '''
-                      terraform init
-                      pwd
-                      ls -l
-                    '''
+                    sh "terraform init"
+
                 }
             }
 
+        }
+        stage('tf-validate') {
+            steps {
+                dir("app-infra") {
+                    echo "running Tf-Validate"
+                    sh "terraform validate"
+                }
+            }
         }
     }
 }
