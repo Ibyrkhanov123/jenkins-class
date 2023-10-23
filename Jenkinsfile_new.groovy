@@ -40,4 +40,12 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            echo "The pipeline ran successfully"
+        }
+        failure {
+            echo "The pipeline failed :("
+        }
+    }
 }
