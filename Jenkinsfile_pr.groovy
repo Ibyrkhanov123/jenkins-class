@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('string_param') {
             steps {
-                echo "${params.STRING_PARAM}"
+                echo "${STRING_PARAM}"
             }
         }
     }
