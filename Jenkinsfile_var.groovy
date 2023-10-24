@@ -16,5 +16,10 @@ pipeline {
                 echo "Var2 value is ${Var2}"
             }
         }
+        stage('variables') {
+            steps {
+                echo "${BUILD_ID}"
+            }
+        }
     }
 }
