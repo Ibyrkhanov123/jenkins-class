@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'git_branch', description: 'Enter a branch name', defaultValue: 'dev')
+        choice(name: 'branch', description: 'Select a branch name', choices: ['dev', 'main'], defaultValue: 'dev')
     }
     stages {
         stage('stage1') {
