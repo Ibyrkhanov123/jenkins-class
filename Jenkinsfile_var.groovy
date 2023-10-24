@@ -19,6 +19,7 @@ pipeline {
         stage('variables') {
             steps {
                 echo "${BUILD_ID}"
+                echo "${JOB_NAME}"
             }
         }
     }
