@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('stage1') {
             steps {
-                echo "${params.git_branch}"
+                echo "${params.branch}"
             }
         }
         stage('stage2') {
             steps {
-                echo "${params.git_branch}"
+                echo "${params.branch}"
             }
         }
     }
