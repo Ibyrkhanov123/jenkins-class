@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        booleanParam(name: 'APPLY', defaultValue: true, description: 'Select apply or destroy')
+    }
     stages {
         stage('tf-version') {
             steps {
@@ -34,8 +37,14 @@ pipeline {
         stage('tf-apply') {
             steps {
                 dir("app-infra") {
-                    echo "running Tf-apply"
-                    sh "terraform apply --auto-approve"
+                    echo "running Tf-apply/destroy"
+                    script {
+                        if (params.APPLY) {
+                            sh "terraform apply --auto-approve"
+                        } else {
+                            sh "terraform destroy --auto-approve"
+                        }
+                    }
                 }
             }
         }
