@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(name: 'APPLY', defaultValue: true, description: 'Select apply or destroy')
+        booleanParam(name: 'APPLY_DESTROY', defaultValue: true, description: 'Select whether to apply or destroy')
     }
     stages {
         stage('tf-version') {
@@ -21,7 +21,7 @@ pipeline {
         stage('tf-validate') {
             steps {
                 dir("app-infra") {
-                    echo "running Tf-Validate"
+                    echo "Running Tf-Validate"
                     sh "terraform validate"
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         stage('tf-plan') {
             steps {
                 dir("app-infra") {
-                    echo "running Tf-plan"
+                    echo "Running Tf-plan"
                     sh "terraform plan"
                 }
             }
@@ -37,13 +37,11 @@ pipeline {
         stage('tf-apply') {
             steps {
                 dir("app-infra") {
-                    echo "running Tf-apply/destroy"
-                    script {
-                        if (params.APPLY) {
-                            sh "terraform apply --auto-approve"
-                        } else {
-                            sh "terraform destroy --auto-approve"
-                        }
+                    echo "Running Tf-apply/destroy"
+                    if (params.APPLY_DESTROY) {
+                        sh "terraform apply --auto-approve"
+                    } else {
+                        sh "terraform destroy --auto-approve"
                     }
                 }
             }
