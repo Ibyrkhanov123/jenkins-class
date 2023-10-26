@@ -7,6 +7,9 @@ pipeline {
             }
         }
         stage('stage2') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo "Running Stage2"
             }
