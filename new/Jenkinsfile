@@ -1,0 +1,25 @@
+pipeline
+    agent any
+
+    stages {
+        stage('build'){
+            steps {
+                sh 'echo "building" >> build.txt'
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'ls -la'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo 'deploying to prod'
+            }
+        }
+        stage('Getting sys info'){
+            steps {
+                sh 'curl ifconfig.me'
+            }
+        }
+    }
