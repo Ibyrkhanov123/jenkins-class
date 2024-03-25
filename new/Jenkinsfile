@@ -1,25 +1,26 @@
-pipeline
+pipeline {
     agent any
 
     stages {
-        stage('build'){
+        stage('Build') {
             steps {
                 sh 'echo "building" >> build.txt'
             }
         }
-        stage('Test'){
+        stage('Test') {
             steps {
                 sh 'ls -la'
             }
         }
-        stage('Deploy'){
-            steps{
-                echo 'deploying to prod'
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to production'
             }
         }
-        stage('Getting sys info'){
+        stage('Getting sys info') {
             steps {
                 sh 'curl ifconfig.me'
             }
         }
     }
+}
