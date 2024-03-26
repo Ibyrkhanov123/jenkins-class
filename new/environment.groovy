@@ -19,5 +19,12 @@ pipeline{
                 echo "VAR2 value is ${VAR2}"
             }
         }
+        stage('deploy') {
+            steps {
+                echo "Build URL is $BUILD_URL"
+                echo "Workspace is ${WORKSPACE}"
+                echo "Job name is ${job_name}"
+            }
+        }
     }
 }
