@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Getting sys info') {
             steps {
-                sh 'curl ifconfig.me'
+                sh 'terraform -v'
             }
         }
     }
