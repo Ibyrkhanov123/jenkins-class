@@ -20,7 +20,7 @@ pipeline{
         cleanup {
             cleanWs()
             dir("${workspace_tmp}"){
-                deleteDir{}
+                deleteDir()
             }
         }
     }
