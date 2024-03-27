@@ -5,8 +5,10 @@ pipeline{
     }
 
     stages {
-        steps {
-            echo "$params.USER_NAME is running the pipeline"
+        stage('stage1'){
+            steps {
+                echo "$params.USER_NAME is running the pipeline"
+            }
         }
     }
 }
