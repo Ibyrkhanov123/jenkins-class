@@ -6,7 +6,7 @@ pipeline{
     }
     options{
             buildDiscarder(logRotator(numToKeepStr: '4'))
-    }
+    }       timeout(time: 20, unit: 'SECONDS')
     stages{
         stage('terraform init') {
             steps{
