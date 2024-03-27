@@ -1,7 +1,9 @@
 pipeline{
 
     agent any
-
+    parameters {
+        string(name: 'ACTION', description: 'Terraform Apply or Destroy' , defaultValue: 'terraform apply -auto-approve', trim: true)
+    }
     stages{
         stage('terraform init') {
             steps{
