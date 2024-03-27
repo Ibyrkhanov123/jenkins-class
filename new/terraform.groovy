@@ -2,7 +2,10 @@ pipeline{
 
     agent any
     parameters {
-        string(name: 'ACTION', description: 'Terraform Apply or Destroy' , defaultValue: 'terraform apply -auto-approve', trim: true)
+        choice(name: 'CHOICE', description: 'Terraform Apply or Destroy' , choices: ['apply', 'destroy'])
+    }
+    options{
+            buildDiscarder(logRotator(numToKeepStr: '4'))
     }
     stages{
         stage('terraform init') {
@@ -24,7 +27,7 @@ pipeline{
         }
         stage('terraform apply') {
             steps{
-                sh $params.ACTION
+                sh $params.CHOICE
             }
         }
 
