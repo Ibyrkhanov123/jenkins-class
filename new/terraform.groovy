@@ -27,7 +27,8 @@ pipeline{
         }
         stage('terraform apply') {
             steps{
-                sh $params.CHOICE
+                input(message: 'Type "yes" to approve deployment')
+                sh "terraform ${params.CHOICE} -auto-approve"
             }
         }
 
