@@ -11,7 +11,7 @@ pipeline{
     stages{
         stage('terraform init') {
             steps{
-                dir('infra') {
+                dir('new/infra') {
                     sh 'terraform -v'
                     sh 'terraform init'
                 }
@@ -20,21 +20,21 @@ pipeline{
 
         stage('terraform validate') {
             steps{
-                dir('infra') {
+                dir('new/infra') {
                     sh 'terraform validate'
                 }
             }
         }
         stage('terraform plan') {
             steps{
-                dir('infra') {
+                dir('new/infra') {
                     sh 'terraform plan'
                 }
             }
         }
         stage('terraform apply') {
             steps{
-                dir('infra') {
+                dir('new/infra') {
                     input(message: 'Type "yes" to approve deployment')
                     sh "terraform ${params.CHOICE} -auto-approve"
                 }
