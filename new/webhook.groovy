@@ -9,6 +9,11 @@ pipeline{
                 echo 'checking new file from GitHub repo'
             }
         }
+        stage('stage2') {
+            steps{
+                echo 'checking for webhook work'
+            }
+        }
     }
     post {
         success {
